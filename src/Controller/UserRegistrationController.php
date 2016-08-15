@@ -151,6 +151,8 @@ class UserRegistrationController extends AbstractActionController
 
     protected function redirectToPostVerificationRoute()
     {
-        return $this->redirect()->toRoute($this->getOptions()->getPostVerificationRoute());
+        return $this->redirect()->toRoute($this->getOptions()->getPostVerificationRoute(), [
+            'lang' => $this->lang()
+        ]);
     }
 }
