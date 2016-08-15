@@ -18,9 +18,15 @@
             "email": "bring2uo@gmail.com"
         }
     ],
+     "repositories" : [ 
+      	{
+            "type":"vcs",
+            "url":"https://github.com/Voodoo773/ZfcUser"
+        }
+    ]
     "require": {
         "php": ">=5.4",
-        "zf-commons/zfc-user": ">=0.1,<2.0",
+        "zf-commons/zfc-user": "dev-lang",
         "mtymek/mt-mail":"<1.2.0"
     },
     "require-dev": {
