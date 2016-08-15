@@ -4,9 +4,12 @@ namespace HtUserRegistration\Mailer;
 use HtUserRegistration\Entity\UserRegistrationInterface;
 use HtUserRegistration\Options\ModuleOptions;
 use MtMail\Service\Mail as MailService;
+use Zend\ServiceManager\ServiceLocatorAwareInterface;
+use Zend\ServiceManager\ServiceLocatorAwareTrait;
 
-class Mailer implements MailerInterface
+class Mailer implements MailerInterface, ServiceLocatorAwareInterface
 {
+    use ServiceLocatorAwareTrait;
     /**
      * @var ModuleOptions
      */
@@ -74,7 +77,8 @@ class Mailer implements MailerInterface
             $message->setFrom($fromEmail);
         }
 
-        $message->setSubject($subject);
+        $translate = $this->getServiceLocator()->get('ViewHelperManager')->get('translate');
+        $message->setSubject($translate($subject));
 
         return $this->mailService->send($message);        
     }
